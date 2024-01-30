@@ -27,18 +27,18 @@ Data Engineering encompasses a broad range of disciplines aimed at facilitating 
 - Retry loading in case of network issues; Don't discard your extracted load packages on a failed upload.
 
 # Data modeling and architecture
-- Choose a naming convention and stick to it. People coming after you will appreciate it.
+- Choose a naming convention and stick to it. Use a linter. People coming after you will appreciate it.
 - Understand the domain of the data whether it be houses, trees or sales transactions, form [ubiquotus language](https://martinfowler.com/bliki/UbiquitousLanguage.html) that is agreed upon with the users of the data and use it in your pipeline code and ddl's accordingly. This will make communication about the pipeline and the data it produces easier with the users.
 - Document your data model for usage
 
 # Data Quality, Governance and documentation
 - Document the why; let your code describe the how.
-- Make tests in general - end-to-end for easy checks if everything works and unit tests for the business logic
+- Make tests in general - end-to-end tests for easy validation of the whole pipeline and unit tests for the business logic to avoid regression.
 - Validate the pipeline output - figure out expected values with domain experts, write expectations as tests and catch anomalies before users see them.
 
 # Data Security and Compliance
 - Ensure any kept PII data is in accordance with GDPR's right to be forgotten (30d expiration on PII data or some deletion strategy). Ensure any staging areas have deletion policies built-in.
-- Manage your pipeline configurations and secrets properly, make sure sensitive information is never sent nor stored in plain text format. If using cloud services, use the provided security services to manage secrets.
+- Manage your pipeline configurations and secrets properly, make sure sensitive information is never sent nor stored in plain text format. If using cloud services, use the provided security services/keyvaults/config managers to keep your secrets safe.
   
 # Data infrastructure and operations
 
