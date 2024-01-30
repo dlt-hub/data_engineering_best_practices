@@ -10,7 +10,7 @@ Data Engineering encompasses a broad range of disciplines aimed at facilitating 
 - Handle errors produced by the source - be mindful of the sources' way of reporting errors - they may be silent.
 - Consider implementing "checkpoints" or chunking large extraction jobs to avoid crashes due to network issues.
 - Retry network issues or temporary server errors with incremental backoffs.
-- Apply data contracts if ingesting data from sources that might sent trash (web events for example)
+- Apply data contracts if ingesting data from sources that might send trash (web events for example)
 
 
 # Data Normalisation
@@ -26,15 +26,20 @@ Data Engineering encompasses a broad range of disciplines aimed at facilitating 
 - Keep the incremental state such as "last value" in a separate table, to avoid expensive full column scans when incrementing data.
 - Retry loading in case of network issues; Don't discard your extracted load packages on a failed upload.
 
-# Data modelling and architecture 
+# Data modeling and architecture
+- Choose a naming convention and stick to it. People coming after you will appreciate it.
+- Understand the domain of the data whether it be houses, trees or sales transactions, form [ubiquotus language](https://martinfowler.com/bliki/UbiquitousLanguage.html) that is agreed upon with the users of the data and use it in your pipeline code and ddl's accordingly. This will make communication about the pipeline and the data it produces easier with the users.
 - Document your data model for usage
 
 # Data Quality, Governance and documentation
 - Document the why; let your code describe the how.
+- Make tests in general - end-to-end for easy checks if everything works and unit tests for the business logic
+- Validate the pipeline output - figure out expected values with domain experts, write expectations as tests and catch anomalies before users see them.
 
 # Data Security and Compliance
 - Ensure any kept PII data is in accordance with GDPR's right to be forgotten (30d expiration on PII data or some deletion strategy). Ensure any staging areas have deletion policies built-in.
-
+- Manage your pipeline configurations and secrets properly, make sure sensitive information is never sent nor stored in plain text format. If using cloud services, use the provided security services to manage secrets.
+  
 # Data infrastructure and operations
 
 
