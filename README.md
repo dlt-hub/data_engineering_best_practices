@@ -27,7 +27,7 @@ Data Engineering encompasses a broad range of disciplines aimed at facilitating 
 - Reduce redundancy with normalization, but consider performance impacts.
 - Regularly optimize data schemas for changing data needs.
 - Design efficient data relationships to maintain integrity.
-- 
+
 
 
 # Data Loading & Storage
@@ -37,7 +37,7 @@ Data Engineering encompasses a broad range of disciplines aimed at facilitating 
 - Organize data into partitions based on access patterns, query performance, or chronological order to improve query speed and reduce costs.
 - Use caching mechanisms for frequently accessed data to decrease load times and reduce database load.
 - Regularly check data integrity and consistency through automated validation checks, ensuring that storage and loading processes haven't introduced errors.
-- Choose efficient file formats (e.g., Parquet, ORC) for storage and processing, especially for large datasets, to enhance performance and reduce storage space.
+- Choose efficient file formats for storage and processing, especially for large datasets, to enhance performance and reduce storage space.
 - Implement automated policies for data archiving to manage data lifecycle, ensuring that only relevant data is actively stored and accessed, while older data is archived cost-effectively.
 - Adopt scalable storage solutions that can grow with your data needs, ensuring that storage capacity is not a bottleneck.
 - Apply data compression to reduce storage requirements and speed up data transfer rates, particularly for large datasets.
@@ -75,11 +75,11 @@ Data Engineering encompasses a broad range of disciplines aimed at facilitating 
 
   
 # Data infrastructure and operations
-- Test Code Thoroughly: Before deploying, conduct extensive testing to identify and resolve issues early, ensuring the system can handle various scenarios. This contributes to the reliability and performance of the data infrastructure.
-- Integration Testing with Builds: Ensure that builds only proceed to deployment after passing integrated tests, reinforcing the stability of the data infrastructure upon updates or new releases.
-- Realistic Data Testing: Use anonymized real-world data samples for testing to validate that the infrastructure processes data accurately and efficiently, reflecting actual operational conditions.
-- Data Handling and Security: Implement secure and efficient data storage, processing, and access mechanisms, ensuring compliance with data protection regulations. This includes practices for data ingestion, encryption, and backup strategies.
-- Monitoring and Scalability: Establish robust monitoring to detect and address performance bottlenecks or anomalies in real-time. Ensure the infrastructure is scalable to adapt to varying data volumes and operational demands.
+- Before deploying, conduct extensive testing to identify and resolve issues early, ensuring the system can handle various scenarios. This contributes to the reliability and performance of the data infrastructure.
+- Ensure that builds only proceed to deployment after passing integrated tests, reinforcing the stability of the data infrastructure upon updates or new releases.
+- Use anonymized real-world data samples for testing to validate that the infrastructure processes data accurately and efficiently, reflecting actual operational conditions.
+- Implement secure and efficient data storage, processing, and access mechanisms, ensuring compliance with data protection regulations. This includes practices for data ingestion, encryption, and backup strategies.
+- Establish robust monitoring to detect and address performance bottlenecks or anomalies in real time. Ensure the infrastructure is scalable to adapt to varying data volumes and operational demands.
 
 These categories represent the field of data engineering and should be sufficient to encompass any best practices. 
 If you wish to add more, please check our contribution guide and consider keeping the existing structure. 
