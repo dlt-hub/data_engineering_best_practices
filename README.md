@@ -13,10 +13,9 @@ Data Engineering encompasses a broad range of disciplines aimed at facilitating 
 - Apply data contracts if ingesting data from sources that might send trash (web events for example)
 - Make sure to extract data in compliance with privacy laws and maintain security and user consent.
 - Respect API rate limits when extracting data from external sources. Implementing rate-limiting strategies prevents overloading source systems and ensures a stable extraction process.
-- Ensure that data extracted from sources is transmitted securely using encryption. This is critical when handling sensitive information to prevent interception and unauthorized access.
-- Document the extraction process and maintain metadata about the data source, extraction time, data volume, and any transformations applied. This aids in traceability and auditing.
+- Document the extraction process and maintain metadata about the data source, extraction time, data volume, and any transformations applied. This aids in traceability and enables you to send lateness alerts for jobs that don't succeed within average times" always good to give specific examples.
 - Support flexible data formatting options during extraction to accommodate the needs of downstream processes.
-- Maintain open communication with the owners or administrators of data sources. This can help in understanding any limitations, planned changes, or optimizations that can impact the extraction process.
+- Capture metadata in rich formats like Paruqet or Avro on extraction when possible, to enable downstream processes to use it.
 
 # Data Normalisation
 - Self deploying ddls and automated migrations: Infer your ddls from data or define them and keep them together with the pipeline; A pipeline that self deploys the needed ddl doesn't run the risk of the loading code being out of sync with db state.
@@ -25,8 +24,10 @@ Data Engineering encompasses a broad range of disciplines aimed at facilitating 
 - Automate your data typing where sensible - do not waste time guessing and manually maintaining those guesses.
 - Add database performance hints into your pipeline latest at this step, to enable their automatic deployment to the database.
 - Reduce redundancy with normalization, but consider performance impacts.
-- Regularly optimize data schemas for changing data needs.
+- When considering between normalisation and de-normalisation, consider trade offs like cost, performance, tool support.
+- If new usage patterns emerge in your data, consider optimising its storage for improving access times and cost by adding performance hints where available, such as distribution keys, cluster keys, indices, compression, etc.
 - Design efficient data relationships to maintain integrity.
+- Consider using referential integrity tests when using normalised data in an analytical setting, as foreign keys are not enforced in analytical technologies for performance reasons.
 
 
 
@@ -37,10 +38,9 @@ Data Engineering encompasses a broad range of disciplines aimed at facilitating 
 - Organize data into partitions based on access patterns, query performance, or chronological order to improve query speed and reduce costs.
 - Use caching mechanisms for frequently accessed data to decrease load times and reduce database load.
 - Regularly check data integrity and consistency through automated validation checks, ensuring that storage and loading processes haven't introduced errors.
-- Choose efficient file formats for storage and processing, especially for large datasets, to enhance performance and reduce storage space.
 - Implement automated policies for data archiving to manage data lifecycle, ensuring that only relevant data is actively stored and accessed, while older data is archived cost-effectively.
 - Adopt scalable storage solutions that can grow with your data needs, ensuring that storage capacity is not a bottleneck.
-- Apply data compression to reduce storage requirements and speed up data transfer rates, particularly for large datasets.
+- Apply data compression to reduce storage requirements and speed up data transfer rates, particularly for large datasets. Use consistent compression types to enable comparing compressed values.
 - Establish robust disaster recovery plans, including regular backups and failover mechanisms, to ensure data availability and continuity in case of system failures.
 
 
@@ -77,7 +77,9 @@ Data Engineering encompasses a broad range of disciplines aimed at facilitating 
 # Data infrastructure and operations
 - Before deploying, conduct extensive testing to identify and resolve issues early, ensuring the system can handle various scenarios. This contributes to the reliability and performance of the data infrastructure.
 - Ensure that builds only proceed to deployment after passing integrated tests, reinforcing the stability of the data infrastructure upon updates or new releases.
-- Use anonymized real-world data samples for testing to validate that the infrastructure processes data accurately and efficiently, reflecting actual operational conditions.
+- Use anonymized real-world data samples for testing to validate that the infrastructure processes data accurately and efficiently, reflecting actual operational conditions. 
+- Monitor the costs and limits to avoid acccidental overruns, it's easy to explode costs, for example if querying large datasets.
+
 - Implement secure and efficient data storage, processing, and access mechanisms, ensuring compliance with data protection regulations. This includes practices for data ingestion, encryption, and backup strategies.
 - Establish robust monitoring to detect and address performance bottlenecks or anomalies in real time. Ensure the infrastructure is scalable to adapt to varying data volumes and operational demands.
 
