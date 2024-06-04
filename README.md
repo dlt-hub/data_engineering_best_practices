@@ -15,13 +15,13 @@ Data Engineering encompasses a broad range of disciplines aimed at facilitating 
 - Respect API rate limits when extracting data from external sources. Implementing rate-limiting strategies prevents overloading source systems and ensures a stable extraction process.
 - Document the extraction process and maintain metadata about the data source, extraction time, data volume, and any transformations applied. This aids in traceability and enables you to send lateness alerts for jobs that don't succeed within average times" always good to give specific examples.
 - Support flexible data formatting options during extraction to accommodate the needs of downstream processes.
-- Capture metadata in rich formats like Paruqet or Avro on extraction when possible, to enable downstream processes to use it.
+- When possible, capture metadata in rich formats such as Parquet or Avro during extraction. This will enable downstream processes to utilize it.
 
 # Data Normalisation
 - Self deploying ddls and automated migrations: Infer your ddls from data or define them and keep them together with the pipeline; A pipeline that self deploys the needed ddl doesn't run the risk of the loading code being out of sync with db state.
 - Track schema changes and notify them to the producer and consumer, so the consumer can curate and the producer can react in case of accident.
 - Type your data as soon as you can - working with schemaless data is known as "schema on read" and introduces vulnerable assumptions into your code.
-- Automate your data typing where sensible - do not waste time guessing and manually maintaining those guesses.
+- Automate your data types where appropriate - avoid wasting time on speculation and manual upkeep of those assumptions.
 - Add database performance hints into your pipeline latest at this step, to enable their automatic deployment to the database.
 - Reduce redundancy with normalization, but consider performance impacts.
 - When considering between normalisation and de-normalisation, consider trade offs like cost, performance, tool support.
@@ -54,7 +54,7 @@ Data Engineering encompasses a broad range of disciplines aimed at facilitating 
 - Document the why; let your code describe the how.
 - Make tests in general - end-to-end tests for easy validation of the whole pipeline and unit tests for the business logic to avoid regression.
 - Validate the pipeline output - figure out expected values with domain experts, write expectations as tests and catch anomalies before users see them.
-- Acknowledge the data quality issues and treat them with releveant importance.
+- Acknowledge the data quality issues and treat them with relevant importance.
 - Collaborate with stakeholders to identify and establish essential data quality conditions tailored to their needs.
 - Integrate automated checks to ensure data meets quality standards early on.
 - Establish a comprehensive data governance framework that outlines policies, standards, and procedures for data management. This framework should ensure data accuracy, privacy, security, and legal compliance.
@@ -78,7 +78,7 @@ Data Engineering encompasses a broad range of disciplines aimed at facilitating 
 - Before deploying, conduct extensive testing to identify and resolve issues early, ensuring the system can handle various scenarios. This contributes to the reliability and performance of the data infrastructure.
 - Ensure that builds only proceed to deployment after passing integrated tests, reinforcing the stability of the data infrastructure upon updates or new releases.
 - Use anonymized real-world data samples for testing to validate that the infrastructure processes data accurately and efficiently, reflecting actual operational conditions. 
-- Monitor the costs and limits to avoid acccidental overruns, it's easy to explode costs, for example if querying large datasets.
+- Monitor costs and limits to prevent accidental overruns. It's easy for expenses to skyrocket, especially when querying large datasets.
 
 - Implement secure and efficient data storage, processing, and access mechanisms, ensuring compliance with data protection regulations. This includes practices for data ingestion, encryption, and backup strategies.
 - Establish robust monitoring to detect and address performance bottlenecks or anomalies in real time. Ensure the infrastructure is scalable to adapt to varying data volumes and operational demands.
